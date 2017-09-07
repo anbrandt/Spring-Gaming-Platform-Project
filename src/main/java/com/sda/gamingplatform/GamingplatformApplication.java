@@ -9,6 +9,7 @@ public class GamingplatformApplication {
 
 
 		System.out.println("Cześć Andrzeju. ");
+		System.out.println("no SIEMA");
 		SpringApplication.run(GamingplatformApplication.class, args);
 	}
 }
