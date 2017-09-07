@@ -7,9 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GamingplatformApplication {
 	public static void main(String[] args) {
 
-
-		System.out.println("Cześć Andrzeju. ");
-		System.out.println("no SIEMA");
 		SpringApplication.run(GamingplatformApplication.class, args);
 	}
 }
