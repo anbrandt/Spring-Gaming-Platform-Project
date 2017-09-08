@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by andrzej on 07.09.17.
  */
@@ -28,6 +31,12 @@ public class UserController {
 		return new ResponseEntity<>(aLong, HttpStatus.CREATED);
 	}
 
+
+	@RequestMapping(value = "/getusers", method = RequestMethod.GET)
+	public ResponseEntity<Iterable<User>> getAllUsers() {
+		Iterable<User> allUsers = userService.getAllUsers();
+		return new ResponseEntity<Iterable<User>>(allUsers, HttpStatus.OK);
+	}
 
 
 
