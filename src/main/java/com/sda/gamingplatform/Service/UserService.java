@@ -20,7 +20,6 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 
-
 	public Long create(User user) {
 		User createdUser = userRepository.save(user);
 		return createdUser.getId();
@@ -28,12 +27,8 @@ public class UserService {
 
 	public Iterable<User> getAllUsers() {
 		Iterable<User> allUsers = userRepository.findAll();
-		List<User> allUsersList = new ArrayList<>();
 
-		for (User allUser : allUsers) {
-			allUsersList.add(allUser);
-		}
-		return allUsersList;
+		return allUsers;
 
 	}
 
