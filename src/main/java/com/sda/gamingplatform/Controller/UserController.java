@@ -1,13 +1,12 @@
 package com.sda.gamingplatform.Controller;
 
 import com.sda.gamingplatform.Entities.User;
-import com.sda.gamingplatform.UserService;
+import com.sda.gamingplatform.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by andrzej on 07.09.17.
@@ -22,6 +21,14 @@ public class UserController {
 	public UserController (UserService userService) {
 		this.userService = userService;
 	}
+
+	@RequestMapping(value = "/useradd", method = RequestMethod.POST)
+	public ResponseEntity<Long> createUser(@RequestBody User user) {
+		Long aLong = userService.create(user);
+		return new ResponseEntity<>(aLong, HttpStatus.CREATED);
+	}
+
+
 
 
 	@RequestMapping (value = "/login")

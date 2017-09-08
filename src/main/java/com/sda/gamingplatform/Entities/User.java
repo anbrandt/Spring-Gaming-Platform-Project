@@ -1,23 +1,38 @@
 package com.sda.gamingplatform.Entities;
 
 
-/**
- * Created by andrzej on 07.09.17.
- */
-//@Entity
+import javax.persistence.*;
+
+@Entity(name = "users")
 public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+
 	private String username;
+
+	@Column(name = "useremail")
 	private String userEmail;
+
 	private String password;
-	private String confirmPassword;
+//	private String confirmPassword;
 
 	public User() {	}
 
-	public User(String username, String userEmail, String password, String confirmPassword) {
+	public User(String username, String userEmail, String password) {
 		this.username = username;
 		this.userEmail = userEmail;
 		this.password = password;
-		this.confirmPassword = confirmPassword;
+//		this.confirmPassword = confirmPassword;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -43,12 +58,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+/*
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
 
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
-	}
+	}*/
 }
