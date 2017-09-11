@@ -2,6 +2,7 @@ package com.sda.gamingplatform.Controller;
 
 import com.sda.gamingplatform.Entities.User;
 import com.sda.gamingplatform.Service.UserService;
+import com.sda.gamingplatform.config.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,18 +26,21 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/useradd", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/useradd", method = RequestMethod.POST)
 	public ResponseEntity<Long> createUser(@RequestBody User user) {
 		Long aLong = userService.create(user);
 		return new ResponseEntity<>(aLong, HttpStatus.CREATED);
 	}
 
 
+
 	@RequestMapping(value = "/getusers", method = RequestMethod.GET)
 	public ResponseEntity<Iterable<User>> getAllUsers() {
 		Iterable<User> allUsers = userService.getAllUsers();
 		return new ResponseEntity<Iterable<User>>(allUsers, HttpStatus.OK);
-	}
+	}*/
+
+
 
 
 
@@ -45,7 +49,7 @@ public class UserController {
 		return "login";
 	}
 
-	@RequestMapping (value = "/register", method = RequestMethod.GET)
+	/*@RequestMapping (value = "/register", method = RequestMethod.GET)
 	public String registerUser() {
 		return "register";
 	}
@@ -55,6 +59,6 @@ public class UserController {
 
 		userService.create(user);
 
-	}
+	}*/
 
 }

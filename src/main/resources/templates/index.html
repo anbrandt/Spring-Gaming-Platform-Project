@@ -13,17 +13,24 @@
 
 
 <p class="h3">LOGIN </p>
+
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+
 <form th:action="@{/login}" method="post">
 
     <div class="form-group" for="username"><label> Username : <input id="username" type="text" name="username"/>
     </label></div>
     <div><label for="password"> Password: <input id="password" type="password" name="password"/> </label></div>
-    <div><input class="btn btn-default" type="submit" value="Sign In"/></div>
+    <div><input class="btn btn-primary" type="submit" value="Sign In"/></div>
 
 </form>
-<input class="btn btn-default" th:href="@{/register}" value="Register"/>
+<a class="btn btn-primary" role="button" href="register.html" th:href="@{/register}" value="Register">Register</a>
 
-<p class="h3"> Click here to <a th:href = "@{/register}"> REGISTER </a></p>
 
 </body>
 </html>
