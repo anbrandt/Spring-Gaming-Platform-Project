@@ -5,23 +5,18 @@
 
     <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
     <script th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <title>Gaming Platform Login Page</title>
+    <title>Game Room</title>
 </head>
 
 <body>
-<p class="h1">Login page</p>
+<p class="h1">Welcome to the Game room [[${#httpServletRequest.remoteUser}]]!</p>
+
+<!--here links to the games. Available for logged users -->
+
+<p class="h3">Choose the game!</p>
+<p class="h4">Roulette</p>
 
 
-
-
-<!--
-<form th:action="@{/login}" method="post">
-
-    <div class="form-group" for="username"><label> User Name : <input id="username" type="text" name="username"/>
-    </label></div>
-    <div><label for="password"> Password: <input id="password" type="password" name="password"/> </label></div>
-    <div><input class="btn btn-default" type="submit" value="Sign In"/></div>
-</form>-->
 
 </body>
 </html>
