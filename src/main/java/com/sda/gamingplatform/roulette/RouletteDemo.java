@@ -8,8 +8,9 @@ public class RouletteDemo {
 
     static Scanner scanner = new Scanner(System.in);
     static BoardCreator boardCreator = new BoardCreator();
+    static TypeOfBetsCreator typeCreator = new TypeOfBetsCreator();
     static List<Field> fields = boardCreator.createFields();
-    static List<List<Field>> typeOfBets = boardCreator.createTypesOfBets();
+    static List<List<Field>> typeOfBets = typeCreator.createTypesOfBets(fields);
     static Random random = new Random();
 
     public static void main(String[] args) {
@@ -24,12 +25,12 @@ public class RouletteDemo {
 
         System.out.println("Choose type of bet: ");
 
-            try {
-                int input = scanner.nextInt();
-                choice = input;
-            } catch (InputMismatchException e) {
-                System.out.println("invalid choice!");
-            }
+        try {
+            int input = scanner.nextInt();
+            choice = input;
+        } catch (InputMismatchException e) {
+            System.out.println("invalid choice!");
+        }
 
 
         switch (choice) {
@@ -50,6 +51,4 @@ public class RouletteDemo {
         Collections.shuffle(fields);
         return fields.get(random.nextInt(fields.size()));
     }
-
-
 }

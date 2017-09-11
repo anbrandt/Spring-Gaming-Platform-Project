@@ -10,12 +10,14 @@ import java.util.List;
 public class BoardCreatorTest {
 
     BoardCreator boardCreator;
+    TypeOfBetsCreator typesCreator;
     List<Field> fields;
     List<List<Field>> typesOfBets;
 
     @Before
     public void setUp() {
         boardCreator = new BoardCreator();
+        typesCreator = new TypeOfBetsCreator();
         fields = boardCreator.createFields();
         typesOfBets = new ArrayList<>();
     }
@@ -30,17 +32,10 @@ public class BoardCreatorTest {
 
     }
 
-//    @Test
-//    public void shouldCreateSortedStraightUpList(){
-//        List<Field> straightUp = boardCreator.straightUpBets();
-//        straightUp.forEach(System.out::println);
-//    }
+    @Test
+    public void shouldReturnAllTypesOfBets(){
 
-//    @Test
-//    public void shouldReturnStreetLists(){
-//
-//        List<Field> sortedAndStraightUp = boardCreator.straightUpBets();
-//        boardCreator.addStreetBets(sortedAndStraightUp);
-//        typesOfBets.forEach(list -> System.out.println(list.toString()));
-//    }
+        List<List<Field>> types = typesCreator.createTypesOfBets(boardCreator.createFields());
+        typesOfBets.forEach(list -> System.out.println(list.toString()));
+    }
 }

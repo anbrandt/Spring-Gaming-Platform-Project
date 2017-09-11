@@ -3,12 +3,15 @@ package com.sda.gamingplatform.roulette;
 public class Field {
 
     private String color;
+    private Integer value;
+
+    public String getColor() {
+        return color;
+    }
 
     public Integer getValue() {
         return value;
     }
-
-    private Integer value;
 
     public Field(String color, Integer value) {
         this.color = color;
