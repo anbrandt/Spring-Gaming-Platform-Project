@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
 
@@ -11,6 +11,28 @@
 <body>
 <p class="h1">Login page</p>
 
+<p class="h3">LOGIN </p>
+
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+
+<p th:if="${loginError}" class="error">Wrong user or password</p>
+<p class="h3">Welcome to the Game room [[${#httpServletRequest.remoteUser}]]!</p>
+
+<form sec:authorize="isAnonymous()" th:action="@{/login}" method="post">
+
+    <div class="form-group" for="username"><label> Username : <input id="username" type="text" name="username"/>
+    </label></div>
+    <div><label for="password"> Password: <input id="password" type="password" name="password"/> </label></div>
+    <div><input class="btn btn-primary" type="submit" value="Sign In"/></div>
+
+</form>
+<br></br>
+<a class="btn btn-primary" role="button" href="register.html" th:href="@{/register}" value="Register">Register</a>
 
 
 
