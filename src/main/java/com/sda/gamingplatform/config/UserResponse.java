@@ -1,8 +1,5 @@
 package com.sda.gamingplatform.config;
 
-/**
- * Created by andrzej on 11.09.17.
- */
 public class UserResponse {
 
 	private boolean success;

@@ -22,12 +22,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		this.datasource = dataSource;
 	}
 
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.
 				authorizeRequests()
-				.antMatchers("/", "/home", "/register")
+				.antMatchers("/", "/index", "/register", "/login")
 				.permitAll()
 				.antMatchers("/adminmanager")
 				.hasRole("ADMIN")
@@ -37,11 +36,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.authenticated()
 				.and()
 				.formLogin()
-				.loginPage("/")
+				.loginPage("/login")
 				.permitAll()
 				.and()
 				.logout()
 				.permitAll();
+		http.csrf().disable();
 	}
 
 	//here method to authenticate users
@@ -50,6 +50,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(datasource)
-				.usersByUsernameQuery("select username, password from users where username=?");
+				.usersByUsernameQuery("select username, password, TRUE from users where username=?")
+				.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
+
 	}
 }

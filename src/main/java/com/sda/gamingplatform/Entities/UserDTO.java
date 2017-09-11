@@ -3,34 +3,21 @@ package com.sda.gamingplatform.Entities;
 
 import javax.persistence.*;
 
-@Entity(name = "users")
-public class User {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+//TODO finish here
+public class UserDTO {
 
 	private String username;
-
-	@Column(name = "useremail")
 	private String userEmail;
-
 	private String password;
+	private String confirmPassword;
 
-	public User() {	}
+	public UserDTO() {	}
 
-	public User(String username, String userEmail, String password) {
+	public UserDTO(String username, String userEmail, String password, String confirmPassword) {
 		this.username = username;
 		this.userEmail = userEmail;
 		this.password = password;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
+		this.confirmPassword = password;
 	}
 
 	public String getUsername() {
@@ -56,6 +43,11 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
-
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = password;
+	}
 }
