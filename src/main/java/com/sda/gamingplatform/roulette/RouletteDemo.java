@@ -2,22 +2,47 @@ package com.sda.gamingplatform.roulette;
 
 import jdk.nashorn.internal.runtime.linker.LinkerCallSite;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class RouletteDemo {
 
+    static Scanner scanner = new Scanner(System.in);
     static BoardCreator boardCreator = new BoardCreator();
     static List<Field> fields = boardCreator.createFields();
+    static List<List<Field>> typeOfBets = boardCreator.createTypesOfBets();
     static Random random = new Random();
 
     public static void main(String[] args) {
 
+        typeOfBets.forEach(list -> System.out.println(list.toString()));
+    }
 
-        System.out.println(spinTheWheel());
+    static void typeChoice() {
+
+        int choice = 0;
+        int validationIndex;
+
+        System.out.println("Choose type of bet: ");
+
+            try {
+                int input = scanner.nextInt();
+                choice = input;
+            } catch (InputMismatchException e) {
+                System.out.println("invalid choice!");
+            }
 
 
+        switch (choice) {
+            case 1:
+                System.out.println("1");
+                break;
+            case 2:
+                System.out.println("2");
+                break;
+            default:
+                System.out.println("crap");
+                break;
+        }
     }
 
     static Field spinTheWheel() {

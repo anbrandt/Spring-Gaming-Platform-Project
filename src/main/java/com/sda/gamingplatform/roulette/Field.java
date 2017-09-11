@@ -3,6 +3,11 @@ package com.sda.gamingplatform.roulette;
 public class Field {
 
     private String color;
+
+    public Integer getValue() {
+        return value;
+    }
+
     private Integer value;
 
     public Field(String color, Integer value) {
