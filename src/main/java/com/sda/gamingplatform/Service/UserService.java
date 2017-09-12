@@ -25,7 +25,13 @@ public class UserService {
 			return "Passwords don't match";
 		}*/
 
+		UserRole userRole = new UserRole();
+		userRole.setRole("ROLE_USER");
+		userRole.setUsername(user.getUsername());
+
+
 		User newUser = userRepository.save(user);
+		userRoleRepository.save(userRole);
 
 		return newUser.getUsername();
 	}

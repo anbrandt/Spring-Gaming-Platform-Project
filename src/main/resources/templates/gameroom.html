@@ -9,12 +9,11 @@
 </head>
 
 <body>
-<p class="h1">Welcome to the Game room [[${#httpServletRequest.remoteUser}]]!</p>
-
-<!--here links to the games. Available for logged users -->
+<p class="h1">Welcome to the game room</p>
 
 <p class="h3">Choose the game!</p>
-<p class="h4">Roulette</p>
+
+<p class="h5"><a th:href="@{/roulette}"> Roulette</a></p>
 
 
 

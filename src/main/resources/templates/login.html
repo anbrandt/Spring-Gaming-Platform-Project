@@ -21,7 +21,6 @@
 </div>
 
 <p th:if="${loginError}" class="error">Wrong user or password</p>
-<p class="h3">Welcome to the Game room [[${#httpServletRequest.remoteUser}]]!</p>
 
 <form sec:authorize="isAnonymous()" th:action="@{/login}" method="post">
 
@@ -33,17 +32,6 @@
 </form>
 <br></br>
 <a class="btn btn-primary" role="button" href="register.html" th:href="@{/register}" value="Register">Register</a>
-
-
-
-<!--
-<form th:action="@{/login}" method="post">
-
-    <div class="form-group" for="username"><label> User Name : <input id="username" type="text" name="username"/>
-    </label></div>
-    <div><label for="password"> Password: <input id="password" type="password" name="password"/> </label></div>
-    <div><input class="btn btn-default" type="submit" value="Sign In"/></div>
-</form>-->
 
 </body>
 </html>

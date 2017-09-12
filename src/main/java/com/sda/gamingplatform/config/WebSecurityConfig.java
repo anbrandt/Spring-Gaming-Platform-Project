@@ -32,6 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.hasRole("ADMIN")
 				.antMatchers("/gameroom")
 				.hasRole("USER")
+				.antMatchers("/roulette")
+				.hasRole("USER")
 				.anyRequest()
 				.authenticated()
 				.and()
