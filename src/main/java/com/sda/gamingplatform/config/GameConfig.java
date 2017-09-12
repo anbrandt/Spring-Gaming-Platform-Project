@@ -2,9 +2,6 @@ package com.sda.gamingplatform.config;
 
 import java.math.BigInteger;
 
-/**
- * Created by andrzej on 12.09.17.
- */
 public class GameConfig {
 
 	private String gameType;

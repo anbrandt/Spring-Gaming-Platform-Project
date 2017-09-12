@@ -1,43 +1,52 @@
 package com.sda.gamingplatform.roulette;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import javax.annotation.PostConstruct;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TypeOfBetsCreator {
 
-    static List<List<Field>> typesOfBets = new ArrayList<>();
-    static List<Field> fields;
+    private List<List<Field>> typesOfBets;
+
+    public List<List<Field>> getTypesOfBets() {
+        return typesOfBets;
+    }
+
+    public TypeOfBetsCreator() {
+
+        BoardCreator boardCreator = new BoardCreator();
+        List<Field> fields = boardCreator.createFields();
+        List<List<Field>> typesOfBets = createTypesOfBets(fields);
+
+        this.typesOfBets = typesOfBets;
+    }
 
     public List<List<Field>> createTypesOfBets(List<Field> list) {
 
-        fields = list;
-        List<Field> sortedAndStraightUp = straightUpBets();
+        List<List<Field>> typesOfBets = new ArrayList<>();
+
+        List<Field> sortedAndStraightUp = straightUpBets(list); //gdy gracz obstawia konretne pole to jest to typ "StraightUp"
         typesOfBets.add(sortedAndStraightUp);
 
-        /*zapytac czy moze zrobic oddzielna klase implementejuca arrayliste gdzie kazdej z list
-        mozna bedzie nadac indentyfikujace imie?*/
-
-        addStreetBets(sortedAndStraightUp);
-        addColumnBets(sortedAndStraightUp);
-        addDozenBets(sortedAndStraightUp);
-        addEvenOddBets(sortedAndStraightUp);
-        add18sBets(sortedAndStraightUp);
-        addRedBlackBets(sortedAndStraightUp);
+        addStreetBets(typesOfBets, sortedAndStraightUp); //obstawianie rzędów "StreetBet"
+        addColumnBets(typesOfBets, sortedAndStraightUp); //obstawianie kolumn "ColumnBet"
+        addDozenBets(typesOfBets, sortedAndStraightUp); //obstawianie tuzinów "DozenBet"
+        addEvenOddBets(typesOfBets, sortedAndStraightUp); //obstawianie parzyste/nieparzyste "EvenOddBet"
+        addRedBlackBets(typesOfBets, sortedAndStraightUp); //obstawianie czerwone/czarne "RedBlackBet"
 
         return typesOfBets;
     }
 
-    public List<Field> straightUpBets() {
+    public List<Field> straightUpBets(List<Field> fields) {
 
         return fields.stream()
                 .sorted(Comparator.comparing(Field::getValue))
                 .collect(Collectors.toList());
     }
 
-    public void addStreetBets(List<Field> sorted) {
+    public void addStreetBets(List<List<Field>> typesOfBets, List<Field> sorted) {
+
+
 
         List<Field> from1to3 = Arrays.asList(sorted.get(1), sorted.get(2), sorted.get(3));
         List<Field> from4to6 = Arrays.asList(sorted.get(4), sorted.get(5), sorted.get(6));
@@ -67,7 +76,7 @@ public class TypeOfBetsCreator {
         typesOfBets.add(from34to36);
     }
 
-    public void addColumnBets(List<Field> sorted) {
+    public void addColumnBets(List<List<Field>> typesOfBets, List<Field> sorted) {
 
         List<Field> from1to34 = new ArrayList<>();
         List<Field> from2to35 = new ArrayList<>();
@@ -90,7 +99,7 @@ public class TypeOfBetsCreator {
         typesOfBets.add(from3to36);
     }
 
-    public void addDozenBets(List<Field> sorted){
+    public void addDozenBets(List<List<Field>> typesOfBets, List<Field> sorted){
 
         List<Field> from1to12 = new ArrayList<>();
         List<Field> from13to24 = new ArrayList<>();
@@ -111,7 +120,7 @@ public class TypeOfBetsCreator {
         typesOfBets.add(from25to36);
     }
 
-    public void addEvenOddBets(List<Field> sorted){
+    public void addEvenOddBets(List<List<Field>> typesOfBets, List<Field> sorted){
 
         List<Field> even = new ArrayList<>();
         List<Field> odd = new ArrayList<>();
@@ -130,7 +139,7 @@ public class TypeOfBetsCreator {
         typesOfBets.add(odd);
     }
 
-    public void add18sBets(List<Field> sorted){
+    public void add18sBets(List<List<Field>> typesOfBets, List<Field> sorted){
 
         List<Field> from1to18 = new ArrayList<>();
         List<Field> from19to36 = new ArrayList<>();
@@ -147,7 +156,7 @@ public class TypeOfBetsCreator {
         typesOfBets.add(from19to36);
     }
 
-    public void addRedBlackBets(List<Field> sorted){
+    public void addRedBlackBets(List<List<Field>> typesOfBets, List<Field> sorted){
 
         List<Field> reds = new ArrayList<>();
         List<Field> blacks = new ArrayList<>();
