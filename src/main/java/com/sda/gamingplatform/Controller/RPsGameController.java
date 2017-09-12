@@ -1,6 +1,6 @@
 package com.sda.gamingplatform.Controller;
 
-import com.sda.gamingplatform.Service.RPsGameService;
+import com.sda.gamingplatform.Service.RouletteGameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RPsGameController {
 
-    private RPsGameService rPsGameService;
+    private RouletteGameService rouletteGameService;
 
     @Autowired
-    public RPsGameController (RPsGameService rPsGameService) {
-        this.rPsGameService = rPsGameService;
+    public RPsGameController (RouletteGameService rouletteGameService) {
+        this.rouletteGameService = rouletteGameService;
     }
 
     @RequestMapping("/hello")
