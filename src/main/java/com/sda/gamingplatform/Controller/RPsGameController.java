@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+//TODO change to Controller annotation
 @RestController
 public class RPsGameController {
 
@@ -17,7 +19,7 @@ public class RPsGameController {
 
     @RequestMapping("/hello")
     public String hello(){
-        return "Kornel and The Holocausts";
+        return "game";
     }
 
 }

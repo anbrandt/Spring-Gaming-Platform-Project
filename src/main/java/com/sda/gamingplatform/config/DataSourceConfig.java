@@ -6,9 +6,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
-/**
- * Created by andrzej on 11.09.17.
- */
+
 public class DataSourceConfig {
 
 	@Value("${spring.datasource.driver-class-name}")
