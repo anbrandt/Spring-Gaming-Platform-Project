@@ -27,4 +27,22 @@ public class Field {
 
         return color == null ? String.valueOf(value) : color + " " + value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Field field = (Field) o;
+
+        if (!color.equals(field.color)) return false;
+        return value.equals(field.value);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = color.hashCode();
+        result = 31 * result + value.hashCode();
+        return result;
+    }
 }
