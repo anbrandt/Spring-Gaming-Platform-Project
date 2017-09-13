@@ -1,10 +1,7 @@
 package com.sda.gamingplatform.Service;
 
 import com.sda.gamingplatform.config.GameConfig;
-import com.sda.gamingplatform.roulette.BoardCreator;
-import com.sda.gamingplatform.roulette.Field;
-import com.sda.gamingplatform.roulette.GameResponse;
-import com.sda.gamingplatform.roulette.TypeOfBetsCreator;
+import com.sda.gamingplatform.roulette.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +12,22 @@ import java.util.Random;
 @Service
 public class RouletteGameService {
 
-    private GameConfig gameConfig;
     private BoardCreator boardCreator = new BoardCreator();
     private TypeOfBetsCreator typeOfBetsCreator = new TypeOfBetsCreator();
     private List<Field> fields = boardCreator.createFields();
     private List<List<Field>> typesOfBets = typeOfBetsCreator.getTypesOfBets();
+    private FieldRandom fieldRandom;
+
 
     @Autowired
-    public RouletteGameService() {
-        gameConfig = new GameConfig();
+    public RouletteGameService(FieldRandom fieldRandom) {
+        this.fieldRandom = fieldRandom;
     }
 
-    public GameResponse decodeGameConfig() {
+    public GameResponse decodeGameConfig(GameConfig gameConfig) {
 
         Field field = generateRandomField();
-        BigInteger score = new BigInteger("");
+        BigInteger score = new BigInteger("0");
 
         if (field.getValue() == 0) {
             return new GameResponse(field, new BigInteger("0"));
@@ -37,10 +35,10 @@ public class RouletteGameService {
 
             switch (gameConfig.getGameType()) {
                 case "StraightUp":
-                    score = whenStraightUp(field);
+                    score = whenStraightUp(field, gameConfig);
                     break;
                 case "StreetBet":
-                    score = whenStreetBet(field);
+                    score = whenStreetBet(field, gameConfig);
                     break;
                 case "ColumnBet":
 
@@ -61,13 +59,10 @@ public class RouletteGameService {
     }
 
     public Field generateRandomField() {
-
-        Random random = new Random();
-
-        return fields.get(random.nextInt(38));
+        return fieldRandom.generateRandomField();
     }
 
-    public BigInteger whenStraightUp(Field drawnField) {
+    public BigInteger whenStraightUp(Field drawnField, GameConfig gameConfig) {
 
         BigInteger multiplier = new BigInteger("35");
 
@@ -81,7 +76,7 @@ public class RouletteGameService {
         return new BigInteger("0");
     }
 
-    public BigInteger whenStreetBet(Field drawnField) {
+    public BigInteger whenStreetBet(Field drawnField, GameConfig gameConfig) {
 
         BigInteger multiplier = new BigInteger("11");
 
