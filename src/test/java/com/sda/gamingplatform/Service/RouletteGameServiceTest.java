@@ -23,7 +23,7 @@ public class RouletteGameServiceTest {
     public void straightUpShouldReturn360IfEquals() throws Exception {
 
         gameConfig = new GameConfig("StraightUp", "Black 2", new BigInteger("10"));
-        gameService = new RouletteGameService(gameConfig);
+        gameService = new RouletteGameService();
 
         BigInteger expected = new BigInteger("360");
         BigInteger actual = gameService.whenStraightUp(new Field("Black", 2));
@@ -36,7 +36,7 @@ public class RouletteGameServiceTest {
     public void straightUpShouldReturn0IfNotEquals() throws Exception {
 
         gameConfig = new GameConfig("StraightUp", "Black 2", new BigInteger("10"));
-        gameService = new RouletteGameService(gameConfig);
+        gameService = new RouletteGameService();
 
         BigInteger expected = new BigInteger("0");
         BigInteger actual = gameService.whenStraightUp(new Field("Red", 1));
@@ -49,7 +49,7 @@ public class RouletteGameServiceTest {
     public void shouldReturn110WhenWinStreetBet() throws Exception {
 
         gameConfig = new GameConfig("StreetBet", "1", new BigInteger("10"));
-        gameService = new RouletteGameService(gameConfig);
+        gameService = new RouletteGameService();
 
         BigInteger expected = new BigInteger("120");
         BigInteger actual = gameService.whenStreetBet(new Field("Red", 1));
@@ -62,7 +62,7 @@ public class RouletteGameServiceTest {
     public void shouldReturn0WhenLooseStreetBet() throws Exception {
 
         gameConfig = new GameConfig("StreetBet", "2", new BigInteger("10"));
-        gameService = new RouletteGameService(gameConfig);
+        gameService = new RouletteGameService();
 
         BigInteger expected = new BigInteger("0");
         BigInteger actual = gameService.whenStreetBet(new Field("Red", 1));
