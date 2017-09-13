@@ -41,16 +41,19 @@ public class RouletteGameService {
                     score = whenStreetBet(field, gameConfig);
                     break;
                 case "ColumnBet":
-
+                    score = whenColumnBet(field, gameConfig);
                     break;
                 case "DozenBet":
-
+                    score = whenDozenBet(field, gameConfig);
                     break;
                 case "EvenOddBet":
-
+                    score = whenEvenOddBet(field, gameConfig);
+                    break;
+                case "18sBet":
+                    score = when18sBet(field, gameConfig);
                     break;
                 case "RedBlackBet":
-
+                    score = whenRedBlack(field, gameConfig);
                     break;
             }
         }
@@ -82,7 +85,7 @@ public class RouletteGameService {
 
         int playerChoice = Integer.parseInt(gameConfig.getChosenField());
 
-        switch (playerChoice){
+        switch (playerChoice) {
             case 1:
                 if (typesOfBets.get(1).contains(drawnField))
                     return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
@@ -136,5 +139,112 @@ public class RouletteGameService {
         return new BigInteger("0");
     }
 
+    public BigInteger whenColumnBet(Field drawnField, GameConfig gameConfig) {
+
+        BigInteger multiplier = new BigInteger("2");
+
+        int playerChoice = Integer.parseInt(gameConfig.getChosenField());
+
+        switch (playerChoice) {
+            case 1:
+                if (typesOfBets.get(13).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 2:
+                if (typesOfBets.get(14).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 3:
+                if (typesOfBets.get(15).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+        }
+
+        return new BigInteger("0");
+    }
+
+    public BigInteger whenDozenBet(Field drawnField, GameConfig gameConfig) {
+
+        BigInteger multiplier = new BigInteger("2");
+
+        int playerChoice = Integer.parseInt(gameConfig.getChosenField());
+
+        switch (playerChoice) {
+            case 1:
+                if (typesOfBets.get(16).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 2:
+                if (typesOfBets.get(17).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 3:
+                if (typesOfBets.get(18).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+        }
+
+        return new BigInteger("0");
+    }
+
+    public BigInteger whenEvenOddBet(Field drawnField, GameConfig gameConfig) {
+
+        BigInteger multiplier = new BigInteger("1");
+
+        int playerChoice = Integer.parseInt(gameConfig.getChosenField());
+
+        switch (playerChoice) {
+            case 1:
+                if (typesOfBets.get(19).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 2:
+                if (typesOfBets.get(20).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+        }
+
+        return new BigInteger("0");
+    }
+
+    public BigInteger when18sBet(Field drawnField, GameConfig gameConfig) {
+
+        BigInteger multiplier = new BigInteger("1");
+
+        int playerChoice = Integer.parseInt(gameConfig.getChosenField());
+
+        switch (playerChoice) {
+            case 1:
+                if (typesOfBets.get(21).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 2:
+                if (typesOfBets.get(22).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+        }
+
+        return new BigInteger("0");
+    }
+
+    public BigInteger whenRedBlack(Field drawnField, GameConfig gameConfig) {
+
+        BigInteger multiplier = new BigInteger("1");
+
+        int playerChoice = Integer.parseInt(gameConfig.getChosenField());
+
+        switch (playerChoice) {
+            case 1:
+                if (typesOfBets.get(23).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+            case 2:
+                if (typesOfBets.get(24).contains(drawnField))
+                    return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
+                break;
+        }
+
+        return new BigInteger("0");
+    }
 
 }
