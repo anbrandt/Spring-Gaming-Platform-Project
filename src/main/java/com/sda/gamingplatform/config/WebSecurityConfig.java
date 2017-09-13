@@ -22,6 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		this.datasource = dataSource;
 	}
 
+
+	//TODO permit all roulette for tests
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.
@@ -33,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/gameroom")
 				.hasRole("USER")
 				.antMatchers("/roulette")
-				.hasRole("USER")
+				.permitAll()
 				.anyRequest()
 				.authenticated()
 				.and()

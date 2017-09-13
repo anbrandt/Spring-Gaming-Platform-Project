@@ -20,8 +20,8 @@ public class RouletteGameService {
     private List<List<Field>> typesOfBets = typeOfBetsCreator.getTypesOfBets();
 
     @Autowired
-    public RouletteGameService(GameConfig gameConfig) {
-        this.gameConfig = gameConfig;
+    public RouletteGameService() {
+        gameConfig = new GameConfig();
     }
 
     public GameResponse decodeGameConfig (){
