@@ -1,7 +1,9 @@
 package com.sda.gamingplatform.Controller;
 
 
+import com.sda.gamingplatform.Service.RouletteGameService;
 import com.sda.gamingplatform.config.GameConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AjaxController {
+
+	private RouletteGameService rouletteGameService;
+
+	@Autowired
+	public AjaxController(RouletteGameService rouletteGameService) {
+		this.rouletteGameService = rouletteGameService;
+	}
 
 /*
 	@RequestMapping(value = "/roulette", method = RequestMethod.POST, consumes = "application/json")
@@ -35,6 +44,8 @@ public class AjaxController {
 
 		String chosenField = gameConfig.getChosenField();
 		System.out.println(gameConfig.getGameType() + gameConfig.getChosenField() + gameConfig.getChips());
+
+
 		return chosenField;
 	}
 
