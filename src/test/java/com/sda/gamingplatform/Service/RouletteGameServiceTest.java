@@ -49,7 +49,7 @@ public class RouletteGameServiceTest {
 
         gameConfig = new GameConfig("StraightUp", "Black 2", new BigInteger("10"));
         gameService = new RouletteGameService(fieldRandom);
-
+      
         GameResponse gameResponse = gameService.decodeGameConfig(gameConfig);
 
         BigInteger expected = new BigInteger("0");
@@ -87,7 +87,6 @@ public class RouletteGameServiceTest {
         gameService = new RouletteGameService(fieldRandom);
 
         GameResponse gameResponse = gameService.decodeGameConfig(gameConfig);
-
 
         BigInteger expected = new BigInteger("0");
         BigInteger actual = gameResponse.getScore();
