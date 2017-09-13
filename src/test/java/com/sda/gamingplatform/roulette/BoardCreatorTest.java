@@ -1,5 +1,6 @@
 package com.sda.gamingplatform.roulette;
 
+import com.sda.gamingplatform.Service.RouletteGameService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,4 +39,5 @@ public class BoardCreatorTest {
         List<List<Field>> types = typesCreator.createTypesOfBets(boardCreator.createFields());
         typesOfBets.forEach(list -> System.out.println(list.toString()));
     }
+
 }
