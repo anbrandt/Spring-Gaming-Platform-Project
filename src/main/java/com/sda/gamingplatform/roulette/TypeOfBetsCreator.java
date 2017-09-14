@@ -32,6 +32,7 @@ public class TypeOfBetsCreator {
         addColumnBets(typesOfBets, sortedAndStraightUp); //obstawianie kolumn "ColumnBet"
         addDozenBets(typesOfBets, sortedAndStraightUp); //obstawianie tuzinów "DozenBet"
         addEvenOddBets(typesOfBets, sortedAndStraightUp); //obstawianie parzyste/nieparzyste "EvenOddBet"
+        add18sBets(typesOfBets, sortedAndStraightUp); //obstawianie pierwsza/druga 18tka "18sBet"
         addRedBlackBets(typesOfBets, sortedAndStraightUp); //obstawianie czerwone/czarne "RedBlackBet"
 
         return typesOfBets;
