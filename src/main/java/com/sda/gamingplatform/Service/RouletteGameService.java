@@ -29,10 +29,9 @@ public class RouletteGameService {
         Field field = generateRandomField();
         BigInteger score = new BigInteger("0");
 
-        if (field.getValue() == 0) {
+        if (field.getValue() == 0 && gameConfig.getGameType() != "StraightUp") {
             return new GameResponse(field, new BigInteger("0"));
         } else {
-
             switch (gameConfig.getGameType()) {
                 case "StraightUp":
                     score = whenStraightUp(field, gameConfig);
@@ -70,9 +69,13 @@ public class RouletteGameService {
         BigInteger multiplier = new BigInteger("35");
 
         String[] playerChoice = gameConfig.getChosenField().split(" ");
-        Field playerField = new Field(playerChoice[0], Integer.parseInt(playerChoice[1]));
+        Field playerField = null;
+        if (playerChoice.length == 2) {
+            playerField = new Field(playerChoice[0], Integer.parseInt(playerChoice[1]));
+        } else
+            playerField = new Field(Integer.parseInt(playerChoice[0]));
 
-        if (drawnField.equals(playerField)) {
+        if (drawnField.getValue() == playerField.getValue()) {
             return new BigInteger(String.valueOf((gameConfig.getChips().multiply(multiplier)).add(gameConfig.getChips())));
         }
 
