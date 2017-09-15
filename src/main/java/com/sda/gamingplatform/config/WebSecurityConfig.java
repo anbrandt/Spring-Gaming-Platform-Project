@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 
 
-	//TODO permit all roulette for tests
+	//TODO permit all roulette for tests (later only for Users)
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.

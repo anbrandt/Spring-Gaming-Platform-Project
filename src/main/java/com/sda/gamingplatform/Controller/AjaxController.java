@@ -39,9 +39,8 @@ public class AjaxController {
 	}
 */
 
-
 	@RequestMapping(value = "/roulette", method = RequestMethod.POST)
-	public String getFromJson(@RequestBody GameConfig gameConfig){
+	public GameResponse getFromJson(@RequestBody GameConfig gameConfig){
 
 		String chosenField = gameConfig.getChosenField();
 		System.out.println(gameConfig.getGameType() + gameConfig.getChosenField() + gameConfig.getChips());
@@ -49,7 +48,7 @@ public class AjaxController {
 		GameResponse gameResponse = rouletteGameService.decodeGameConfig(gameConfig);
 		System.out.println(gameResponse.getScore() + " " + gameResponse.getWinningField());
 
-		return chosenField;
+		return gameResponse;
 	}
 
 }
