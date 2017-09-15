@@ -266,6 +266,38 @@ public class RouletteGameServiceTest {
     }
 
     @Test
+    public void shouldWinIfChooseZeroInStraightUpBet(){
+        FieldRandom fieldRandom = Mockito.mock(FieldRandom.class);
+        Mockito.when(fieldRandom.generateRandomField()).thenReturn(new Field(0));
+
+        gameConfig = new GameConfig("StraightUp", "0", new BigInteger("10"));
+        gameService = new RouletteGameService(fieldRandom);
+
+        GameResponse gameResponse = gameService.decodeGameConfig(gameConfig);
+
+        BigInteger expected = new BigInteger("360");
+        BigInteger actual = gameResponse.getScore();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldLooseIfDrawnZero(){
+        FieldRandom fieldRandom = Mockito.mock(FieldRandom.class);
+        Mockito.when(fieldRandom.generateRandomField()).thenReturn(new Field(0));
+
+        gameConfig = new GameConfig("DozenBet", "2", new BigInteger("10"));
+        gameService = new RouletteGameService(fieldRandom);
+
+        GameResponse gameResponse = gameService.decodeGameConfig(gameConfig);
+
+        BigInteger expected = new BigInteger("0");
+        BigInteger actual = gameResponse.getScore();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
     public void decodeGameConfig() throws Exception {
 
 
