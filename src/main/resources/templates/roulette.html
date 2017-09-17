@@ -6,52 +6,255 @@
 
     <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
-    <script th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <title>Roulette Game</title>
 </head>
 
 <body>
 <p class="h1">Welcome to the Roulette!</p>
-<form>
-    <div class="form-group">
-        <label for="gameTypeInput">Write Game Type</label>
-        <input type="text" class="form-control" id="GameTypeInput" aria-describedby="emailHelp" placeholder="Enter game type">
+<div class="container" id="betTypeContainer">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Choose the Bet type
+            <span class="caret"></span></button>
+        <ul id="gameType" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" id="straightUp" tabindex="-1" href="#">StraightUp</a></li>
+            <li role="presentation"><a role="menuitem" id="columnBet" tabindex="-1" href="#">ColumnBet</a></li>
+            <li role="presentation"><a role="menuitem" id="dozenBet" tabindex="-1" href="#">DozenBet</a></li>
+            <li role="presentation"><a role="menuitem" id="evenOddBet" tabindex="-1" href="#">EvenOddBet</a></li>
+            <li role="presentation"><a role="menuitem" id="18sBet" tabindex="-1" href="#">18sBet</a></li>
+            <li role="presentation"><a role="menuitem" id="redBlackBet" tabindex="-1" href="#">RedBlackBet</a></li>
+        </ul>
     </div>
-    <div class="form-group">
-        <label for="FieldToBet">Write Field You Want To Bet</label>
-        <input type="text" class="form-control" id="FieldToBet" placeholder="Field">
+</div>
+
+
+
+<div id="straightContainer" class="container hidden">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">StraightUp Bet - Choose the Field
+            <span class="caret"></span></button>
+        <ul  id="straightUpId" class="SelectInput dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-3" href="#">0<a/></li>
+            <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Red 1<a/></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 2</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 3</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 4</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 5</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 6</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 7</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 8</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 9</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 10</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 11</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 12</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 13</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 14</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 15</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 16</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 17</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 18</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 19</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 20</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 21</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 22</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 23</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 24</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 25</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 26</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 27</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 28</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 29</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 30</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 31</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 32</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 33</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 34</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 35</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red 36</a></li>
+        </ul>
     </div>
-    <div class="form-group">
-        <label for="ChipsBet">How many chips?</label>
-        <input type="text" class="form-control" id="ChipsBet" placeholder="Chips">
+</div>
+
+
+<div id="columnContainer" class="container hidden">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">ColumnBet - Choose the Column you want to bet on
+            <span class="caret"></span></button>
+        <ul id="columnId" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1st column</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2nd column</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3rd column</a></li>
+        </ul>
     </div>
-    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+</div>
+<div id="dozenContainer" class="container hidden">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">DozenBet - Choose the Dozen you want to bet on
+            <span class="caret"></span></button>
+        <ul id="dozenId" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 to 12</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">13 to 24</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">25 to 36</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="evenOddContainer" class="container hidden">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">Even Odd Bet - Choose Even or Odd Fields
+            <span class="caret"></span></button>
+        <ul id="evenOddId" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Even</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Odd</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="18sBetContainer" class="container hidden">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">18s Bet - Choose which 18s Fields you want to bet on
+            <span class="caret"></span></button>
+        <ul id="18sId" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1 to 18</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">19 to 36</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="redBlackContainer" class="container hidden">
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">Red Black Bet - Choose Red or Black Fields
+            <span class="caret"></span></button>
+        <ul id="redBlackId" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black</a></li>
+        </ul>
+
+    </div>
+</div>
+
+<form id="chipsBet" class="hidden">
+    <div class="form-group has-warning">
+        <label for="ChipsBet">Bet</label>
+        <input id="chipsBetInput" type="text" class="form-control" placeholder="Chips" required="true">
+        <button type="submit" class="btn btn-primary" id="submitDropdownButton">Submit</button>
+
+    </div>
 </form>
 
-        <script>
-		$("#submitButton").click(function () {
-		var GameConfig = {
-			gameType: $("#GameTypeInput").val(),
-			chosenField: $("#FieldToBet").val(),
-			chips: $("#ChipsBet").val()
-		}
-	  		$.ajax({
+<script>
+
+
+var Game = {}
+
+$(document).ready(function(){
+    $("#straightUp").click(function(){
+        $("#straightContainer").removeClass('hidden');
+        Game.gameType = "straightUp";
+    });
+    $("#streetBet").click(function(){
+        $("#streetContainer").removeClass('hidden');
+        Game.gameType = "streetBet";
+
+    });
+    $("#columnBet").click(function(){
+        $("#columnContainer").removeClass('hidden');
+                Game.gameType = "columnBet";
+
+    });
+    $("#dozenBet").click(function(){
+        $("#dozenContainer").removeClass('hidden');
+                Game.gameType = "dozenBet";
+
+    });
+    $("#evenOddBet").click(function(){
+        $("#evenOddContainer").removeClass('hidden');
+        	        Game.gameType = "evenOddBet";
+
+    });
+    $("#18sBet").click(function(){
+        $("#18sBetContainer").removeClass('hidden');
+            Game.gameType = "18sBet";
+
+    });
+    $("#redBlackBet").click(function(){
+        $("#redBlackContainer").removeClass('hidden');
+            Game.gameType = "redBlackBet";
+
+    });
+
+});
+var fieldToMap;
+
+$("#straightUpId li a, #columnId li a, #dozenId li a, #evenOddId li a, #18sId li a, #redBlackId li a").click(function(){
+fieldToMap = $(this).text();
+console.log(fieldToMap);
+});
+
+
+  		$(document).ready(function(){
+    		$("#straightContainer, #streetContainer, #columnContainer, #dozenContainer, #evenOddContainer, #18sBetContainer, #redBlackContainer" ).click(function(){
+       			 $("#chipsBet").removeClass('hidden');
+   			 });
+		});
+
+
+  			var map = {
+  				'1st column': '1',
+  				'2nd column': '2',
+  				'3rd column': '3',
+  				'1 to 12': '1',
+  				'13 to 24': '2',
+  				'25 to 36': '3',
+  				'even': '1',
+  				'odd': '2',
+  				'1 to 18': '1',
+  				'19 to 36': '2',
+  				'red': '1',
+  				'black': '2'
+  			};
+
+
+			$("#submitDropdownButton").click(function() {
+
+				if(fieldToMap === undefined) {
+					alert('You have to pick a bet');
+					return false;
+				}
+
+				if($("#chipsBetInput").val() == "") {
+					alert('you have to fill the chips field');
+					return false;
+				};
+
+
+				if(Game.gameType == "straightUp") {
+					Game.chosenField = fieldToMap;
+				} else {
+  				var field = map[fieldToMap];
+  				Game.chosenField = field;
+  				}
+
+				Game.chips = $("#chipsBetInput").val();
+
+				console.log(Game);
+
+					$.ajax({
 	            type: 'post',
 	            url: '/roulette',
-	            data: JSON.stringify(GameConfig),
+	            data: JSON.stringify(Game),
 	            contentType: "application/json; charset=utf-8",
 	            traditional: true,
 	            success: function (data) {
-	                    console.log(data);
-	                   alert("Success");
+	                alert("Json sent");
 	            }
-	        });
-	  	});
-	    </script>
+	        	});
+			});
+		</script>
 
-<div id ="gameResult">
-    <p></p>
-</div>
+
+
+
 
 </body>
 </html>
