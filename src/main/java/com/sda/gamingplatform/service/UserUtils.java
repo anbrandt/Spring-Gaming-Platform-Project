@@ -7,9 +7,6 @@ import org.springframework.security.core.userdetails.User;
 
 import java.util.Optional;
 
-/**
- * Created by RENT on 2017-09-18.
- */
 public class UserUtils {
 
     public static String getUsername() {
