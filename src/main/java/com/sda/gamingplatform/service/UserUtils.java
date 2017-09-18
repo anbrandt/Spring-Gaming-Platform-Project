@@ -10,11 +10,20 @@ import java.util.Optional;
 public class UserUtils {
 
     public static String getUsername() {
-        return Optional.ofNullable(SecurityContextHolder.getContext())
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String name = authentication.getName();
+
+        return name;
+
+        /*Optional.ofNullable(SecurityContextHolder.getContext())
                 .map(SecurityContext::getAuthentication)
                 .map(Authentication::getPrincipal)
                 .map(principal -> (User) principal)
                 .map(User::getUsername)
                 .orElse("anonymous");
+
+*/
+
+
     }
 }
