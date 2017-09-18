@@ -39,4 +39,9 @@ public class GameConfig {
 	public void setChips(BigInteger chips) {
 		this.chips = chips;
 	}
+
+	@Override
+	public String toString() {
+		return gameType + " " + chosenField + " " + chips;
+	}
 }

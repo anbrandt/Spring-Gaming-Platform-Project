@@ -1,23 +1,35 @@
-package com.sda.gamingplatform.Entities;
-
+package com.sda.gamingplatform.entities;
 
 import javax.persistence.*;
 
-//TODO finish here
-public class UserDTO {
+@Entity(name = "users")
+public class User {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
 	private String username;
+
+	@Column(name = "useremail")
 	private String userEmail;
+
 	private String password;
-	private String confirmPassword;
 
-	public UserDTO() {	}
+	public User() {	}
 
-	public UserDTO(String username, String userEmail, String password, String confirmPassword) {
+	public User(String username, String userEmail, String password) {
 		this.username = username;
 		this.userEmail = userEmail;
 		this.password = password;
-		this.confirmPassword = password;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getUsername() {
@@ -43,11 +55,6 @@ public class UserDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
 
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = password;
-	}
+
 }

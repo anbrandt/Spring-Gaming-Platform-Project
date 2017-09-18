@@ -1,6 +1,6 @@
-package com.sda.gamingplatform.Repository;
+package com.sda.gamingplatform.repository;
 
-import com.sda.gamingplatform.Entities.User;
+import com.sda.gamingplatform.entities.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Long> {
