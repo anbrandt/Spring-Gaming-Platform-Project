@@ -21,11 +21,6 @@ public class UserService {
 	}
 
 	public String create(User user) {
-		/*if(!Objects.equals(user.getPassword(), user.getConfirmPassword())) {
-			return "Passwords don't match";
-		}*/
-
-
 
 		User newUser = userRepository.save(user);
 

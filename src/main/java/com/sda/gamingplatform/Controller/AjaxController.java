@@ -23,21 +23,7 @@ public class AjaxController {
 		this.rouletteGameService = rouletteGameService;
 	}
 
-/*
-	@RequestMapping(value = "/roulette", method = RequestMethod.POST, consumes = "application/json")
-	public ResponseEntity<String> getJsonFromRoulette(@RequestBody String jsonString){
-		System.out.println("received :" + jsonString);
-		*/
-/*try {
-			customerService.saveCustomer(customer);
-			return new Status(code, message);
-		} catch (Exception e) {
-			return new Status(0, e.toString());
-		}*//*
 
-		return new ResponseEntity<String>(jsonString, HttpStatus.OK);
-	}
-*/
 
 	@RequestMapping(value = "/roulette", method = RequestMethod.POST)
 	public GameResponse getFromJson(@RequestBody GameConfig gameConfig){
@@ -46,7 +32,7 @@ public class AjaxController {
 		System.out.println(gameConfig.getGameType() + gameConfig.getChosenField() + gameConfig.getChips());
 
 		GameResponse gameResponse = rouletteGameService.decodeGameConfig(gameConfig);
-		System.out.println(gameResponse.getScore() + " " + gameResponse.getWinningField());
+//		System.out.println(gameResponse.getScore() + " " + gameResponse.getWinningField());
 
 		return gameResponse;
 	}

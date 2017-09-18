@@ -142,6 +142,11 @@
     </div>
 </form>
 
+
+<div id="gameResult">
+</div>
+
+
 <script>
 
 
@@ -215,7 +220,9 @@ console.log(fieldToMap);
   			};
 
 
-			$("#submitDropdownButton").click(function() {
+				$("#submitDropdownButton").click(function(event) {
+
+				event.preventDefault();
 
 				if(fieldToMap === undefined) {
 					alert('You have to pick a bet');
@@ -238,6 +245,7 @@ console.log(fieldToMap);
 				Game.chips = $("#chipsBetInput").val();
 
 				console.log(Game);
+	                						$("#gameResult").append(Game.chosenField);
 
 					$.ajax({
 	            type: 'post',
@@ -246,7 +254,9 @@ console.log(fieldToMap);
 	            contentType: "application/json; charset=utf-8",
 	            traditional: true,
 	            success: function (data) {
-	                alert("Json sent");
+	                var inputText = "You lost " + data.score;
+	                   alert("Json sent");
+	                $("#gameResult").html(inputText);
 	            }
 	        	});
 			});
