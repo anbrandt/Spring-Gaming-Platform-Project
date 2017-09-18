@@ -1,18 +1,11 @@
-package com.sda.gamingplatform.Controller;
+package com.sda.gamingplatform.controller;
 
-import com.sda.gamingplatform.Entities.User;
-import com.sda.gamingplatform.Service.UserService;
-import com.sda.gamingplatform.config.UserResponse;
+import com.sda.gamingplatform.entities.User;
+import com.sda.gamingplatform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 
 @Controller

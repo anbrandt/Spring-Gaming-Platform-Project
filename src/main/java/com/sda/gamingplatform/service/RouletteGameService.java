@@ -1,5 +1,7 @@
-package com.sda.gamingplatform.Service;
+package com.sda.gamingplatform.service;
 
+import com.sda.gamingplatform.entities.Spin;
+import com.sda.gamingplatform.repository.SpinRepository;
 import com.sda.gamingplatform.config.GameConfig;
 import com.sda.gamingplatform.roulette.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class RouletteGameService {
@@ -17,19 +18,23 @@ public class RouletteGameService {
     private List<Field> fields = boardCreator.createFields();
     private List<List<Field>> typesOfBets = typeOfBetsCreator.getTypesOfBets();
     private FieldRandom fieldRandom;
+    private SpinRepository spinRepository;
 
 
     @Autowired
-    public RouletteGameService(FieldRandom fieldRandom) {
+    public RouletteGameService(FieldRandom fieldRandom, SpinRepository spinRepository) {
         this.fieldRandom = fieldRandom;
+        this.spinRepository = spinRepository;
     }
+
 
     public GameResponse decodeGameConfig(GameConfig gameConfig) {
 
         Field field = generateRandomField();
         BigInteger score = new BigInteger("0");
 
-        if (field.getValue() == 0 && gameConfig.getGameType() != "StraightUp") {
+        if (field.getValue() == 0 && !gameConfig.getGameType().equals("StraightUp")) {
+            saveSpin(gameConfig, new BigInteger("0"), field);
             return new GameResponse(field, new BigInteger("0"));
         } else {
             switch (gameConfig.getGameType()) {
@@ -57,7 +62,13 @@ public class RouletteGameService {
             }
         }
 
+        saveSpin(gameConfig, score, field);
         return new GameResponse(field, score);
+    }
+
+    public void saveSpin(GameConfig gameConfig, BigInteger score, Field field){
+        Spin spin = new Spin(UserUtils.getUsername(), gameConfig.toString(), score.toString(), field.toString());
+        spinRepository.save(spin);
     }
 
     public Field generateRandomField() {

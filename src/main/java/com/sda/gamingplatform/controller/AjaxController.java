@@ -1,13 +1,10 @@
-package com.sda.gamingplatform.Controller;
+package com.sda.gamingplatform.controller;
 
 
-import com.sda.gamingplatform.Service.RouletteGameService;
+import com.sda.gamingplatform.service.RouletteGameService;
 import com.sda.gamingplatform.config.GameConfig;
 import com.sda.gamingplatform.roulette.GameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

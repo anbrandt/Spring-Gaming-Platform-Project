@@ -1,4 +1,4 @@
-package com.sda.gamingplatform.Entities;
+package com.sda.gamingplatform.entities;
 
 
 import javax.persistence.Entity;
