@@ -29,7 +29,7 @@ public class AjaxController {
 		System.out.println(gameConfig.getGameType() + gameConfig.getChosenField() + gameConfig.getChips());
 
 		GameResponse gameResponse = rouletteGameService.decodeGameConfig(gameConfig);
-//		System.out.println(gameResponse.getScore() + " " + gameResponse.getWinningField());
+		System.out.println("Score :" + gameResponse.getScore() + "\n " + " Winning field : " + gameResponse.getWinningField());
 
 		return gameResponse;
 	}

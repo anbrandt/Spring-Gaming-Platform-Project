@@ -155,26 +155,26 @@ var Game = {}
 $(document).ready(function(){
     $("#straightUp").click(function(){
         $("#straightContainer").removeClass('hidden');
-        Game.gameType = "straightUp";
+        Game.gameType = "StraightUp";
     });
     $("#streetBet").click(function(){
         $("#streetContainer").removeClass('hidden');
-        Game.gameType = "streetBet";
+        Game.gameType = "StreetBet";
 
     });
     $("#columnBet").click(function(){
         $("#columnContainer").removeClass('hidden');
-                Game.gameType = "columnBet";
+                Game.gameType = "ColumnBet";
 
     });
     $("#dozenBet").click(function(){
         $("#dozenContainer").removeClass('hidden');
-                Game.gameType = "dozenBet";
+                Game.gameType = "DozenBet";
 
     });
     $("#evenOddBet").click(function(){
         $("#evenOddContainer").removeClass('hidden');
-        	        Game.gameType = "evenOddBet";
+        	        Game.gameType = "EvenOddBet";
 
     });
     $("#18sBet").click(function(){
@@ -184,7 +184,7 @@ $(document).ready(function(){
     });
     $("#redBlackBet").click(function(){
         $("#redBlackContainer").removeClass('hidden');
-            Game.gameType = "redBlackBet";
+            Game.gameType = "RedBlackBet";
 
     });
 
@@ -211,12 +211,12 @@ console.log(fieldToMap);
   				'1 to 12': '1',
   				'13 to 24': '2',
   				'25 to 36': '3',
-  				'even': '1',
-  				'odd': '2',
+  				'Even': '1',
+  				'Odd': '2',
   				'1 to 18': '1',
   				'19 to 36': '2',
-  				'red': '1',
-  				'black': '2'
+  				'Red': '1',
+  				'Black': '2'
   			};
 
 
