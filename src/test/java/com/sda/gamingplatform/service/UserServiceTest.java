@@ -1,10 +1,8 @@
-package com.sda.gamingplatform.Service;
+package com.sda.gamingplatform.service;
 
-import com.sda.gamingplatform.Repository.UserRepository;
+import com.sda.gamingplatform.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 
 public class UserServiceTest {

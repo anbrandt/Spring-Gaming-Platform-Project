@@ -1,9 +1,9 @@
-package com.sda.gamingplatform.Service;
+package com.sda.gamingplatform.service;
 
-import com.sda.gamingplatform.Entities.User;
-import com.sda.gamingplatform.Entities.UserRole;
-import com.sda.gamingplatform.Repository.UserRepository;
-import com.sda.gamingplatform.Repository.UserRoleRepository;
+import com.sda.gamingplatform.entities.User;
+import com.sda.gamingplatform.entities.UserRole;
+import com.sda.gamingplatform.repository.UserRepository;
+import com.sda.gamingplatform.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

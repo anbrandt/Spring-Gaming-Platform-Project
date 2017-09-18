@@ -1,7 +1,6 @@
-package com.sda.gamingplatform.Repository;
+package com.sda.gamingplatform.repository;
 
-import com.sda.gamingplatform.Entities.User;
-import com.sda.gamingplatform.Entities.UserRole;
+import com.sda.gamingplatform.entities.UserRole;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRoleRepository extends CrudRepository<UserRole, Long> {
