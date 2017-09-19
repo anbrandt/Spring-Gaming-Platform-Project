@@ -5,6 +5,7 @@ import com.sda.gamingplatform.entities.Chips;
 import com.sda.gamingplatform.entities.User;
 import com.sda.gamingplatform.repository.ChipsRepository;
 import com.sda.gamingplatform.repository.UserRepository;
+import com.sda.gamingplatform.roulette.GameResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,11 +31,19 @@ public class ChipService {
 		return one.getUser_chips();
 	}
 
-	public BigInteger updatedAmount() {
+	public BigInteger updatedAmount(GameResponse gameResponse) {
+		String username = UserUtils.getUsername();
+		User byUsername = userRepository.findByUsername(username);
+		BigInteger score = gameResponse.getScore();
 
+		if(score.equals(0)) {
+			return getChipsAmount();
+		} else {
+			BigInteger updatedValue = getChipsAmount().add(score);
+			chipsRepository.save(byUsername.getId(), updatedValue);
+			return updatedValue;
+		}
 
-
-		return null;
 	}
 
 
