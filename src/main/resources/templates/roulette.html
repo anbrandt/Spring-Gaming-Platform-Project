@@ -265,9 +265,12 @@ console.log(fieldToMap);
 	            traditional: true,
 	            success: function (data) {
 	                var inputText = "Your result is " + data.score;
+	                var chipsUpdated = "Chips updated " + data.chips;
 	                var inputField = data.winningField;
-	                $("#gameResult").html(inputText + inputField);
-	            }
+	                <!--$("#gameResult").html(inputText + inputField);-->
+	                 $("#gameResult").html(chipsUpdated);
+	                 $("#updatedChipsAmount").html(chipsUpdated);
+	               }
 	        	});
 			});
 		</script>

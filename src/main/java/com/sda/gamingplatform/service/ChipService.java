@@ -36,11 +36,12 @@ public class ChipService {
 		User byUsername = userRepository.findByUsername(username);
 		BigInteger score = gameResponse.getScore();
 
-		if(score.equals(0)) {
+		if(score.equals(BigInteger.ZERO)) {
 			return getChipsAmount();
 		} else {
 			BigInteger updatedValue = getChipsAmount().add(score);
-			chipsRepository.save(byUsername.getId(), updatedValue);
+			Chips chips = new Chips(byUsername.getId(), updatedValue);
+			chipsRepository.save(chips);
 			return updatedValue;
 		}
 

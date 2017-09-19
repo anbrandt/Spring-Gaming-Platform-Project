@@ -66,7 +66,8 @@ public class RouletteGameService {
 
         saveSpin(gameConfig, score, field);
         GameResponse gameResponse = new GameResponse(field, score);
-        chipService.updatedAmount(gameResponse);
+        BigInteger bigInteger = chipService.updatedAmount(gameResponse);
+        System.out.println(bigInteger);
         return gameResponse;
     }
 
