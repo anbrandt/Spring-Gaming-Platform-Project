@@ -1,10 +1,12 @@
 package com.sda.gamingplatform.config;
 
+import org.apache.tomcat.jdbc.pool.PoolProperties;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 
 public class DataSourceConfig {
@@ -28,6 +30,11 @@ public class DataSourceConfig {
 		driverManagerDataSource.setUrl(url);
 		driverManagerDataSource.setUsername(username);
 		driverManagerDataSource.setPassword(password);
+
+		Properties properties = new Properties();
+		properties.setProperty("max-active","1");
+		driverManagerDataSource.setConnectionProperties(properties);
+
 		return driverManagerDataSource;
 	}
 

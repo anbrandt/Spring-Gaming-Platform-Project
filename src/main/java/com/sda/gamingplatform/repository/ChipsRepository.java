@@ -8,5 +8,4 @@ import java.math.BigInteger;
 
 public interface ChipsRepository extends CrudRepository<Chips, Long> {
 
-	 void save(long id, BigInteger chips);
 }
