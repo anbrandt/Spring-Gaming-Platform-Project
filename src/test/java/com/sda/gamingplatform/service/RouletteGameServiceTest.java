@@ -1,6 +1,7 @@
 package com.sda.gamingplatform.service;
 
 import com.sda.gamingplatform.entities.Spin;
+import com.sda.gamingplatform.repository.ChipsRepository;
 import com.sda.gamingplatform.repository.SpinRepository;
 import com.sda.gamingplatform.config.GameConfig;
 import com.sda.gamingplatform.roulette.Field;
@@ -14,7 +15,6 @@ import org.mockito.Mockito;
 
 import java.math.BigInteger;
 
-import static org.codehaus.groovy.runtime.DefaultGroovyMethods.any;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class RouletteGameServiceTest {
@@ -25,11 +25,13 @@ public class RouletteGameServiceTest {
     private FieldRandom fieldRandom;
     @Mock
     private SpinRepository spinRepository;
+    @Mock
+    private ChipService chipService;
 
     @Before
     public void setUp() {
         initMocks(this);
-        gameService = new RouletteGameService(fieldRandom, spinRepository);
+        gameService = new RouletteGameService(fieldRandom, spinRepository, chipService);
     }
 
     @Test
@@ -299,7 +301,6 @@ public class RouletteGameServiceTest {
     @Test
     public void shouldSaveSpinRecord(){
 
-
         Mockito.when(fieldRandom.generateRandomField()).thenReturn(new Field("Black",2));
         Spin spin = new Spin("anonymous","DozenBet 2 10","0","Black 2");
 
@@ -315,7 +316,6 @@ public class RouletteGameServiceTest {
 
         Assert.assertEquals(expected, actual);
         Mockito.verify(spinRepository,Mockito.times(1)).save(spin);
-
     }
 
     @Test
