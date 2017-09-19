@@ -12,7 +12,6 @@ public class UserUtils {
     public static String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
-
         return name;
 
         /*Optional.ofNullable(SecurityContextHolder.getContext())
@@ -23,7 +22,7 @@ public class UserUtils {
                 .orElse("anonymous");
 
 */
-
-
     }
+
+
 }
