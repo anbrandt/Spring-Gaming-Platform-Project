@@ -1,6 +1,7 @@
 package com.sda.gamingplatform.service;
 
 import com.sda.gamingplatform.entities.Spin;
+import com.sda.gamingplatform.repository.ChipsRepository;
 import com.sda.gamingplatform.repository.SpinRepository;
 import com.sda.gamingplatform.config.GameConfig;
 import com.sda.gamingplatform.roulette.*;
@@ -19,12 +20,14 @@ public class RouletteGameService {
     private List<List<Field>> typesOfBets = typeOfBetsCreator.getTypesOfBets();
     private FieldRandom fieldRandom;
     private SpinRepository spinRepository;
+    private ChipService chipService;
 
 
     @Autowired
-    public RouletteGameService(FieldRandom fieldRandom, SpinRepository spinRepository) {
+    public RouletteGameService(FieldRandom fieldRandom, SpinRepository spinRepository, ChipService chipService) {
         this.fieldRandom = fieldRandom;
         this.spinRepository = spinRepository;
+        this.chipService = chipService;
     }
 
     public GameResponse decodeGameConfig(GameConfig gameConfig) {
@@ -62,7 +65,9 @@ public class RouletteGameService {
         }
 
         saveSpin(gameConfig, score, field);
-        return new GameResponse(field, score);
+        GameResponse gameResponse = new GameResponse(field, score);
+        chipService.updatedAmount(gameResponse);
+        return gameResponse;
     }
 
     public void saveSpin(GameConfig gameConfig, BigInteger score, Field field){

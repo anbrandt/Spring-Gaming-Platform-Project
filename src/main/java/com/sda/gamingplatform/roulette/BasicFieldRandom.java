@@ -5,10 +5,6 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by RENT on 2017-09-13.
- */
-
 @Component
 public class BasicFieldRandom implements FieldRandom {
 
