@@ -27,7 +27,6 @@ public class RouletteGameService {
         this.spinRepository = spinRepository;
     }
 
-
     public GameResponse decodeGameConfig(GameConfig gameConfig) {
 
         Field field = generateRandomField();

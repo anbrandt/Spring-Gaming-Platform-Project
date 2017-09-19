@@ -147,6 +147,12 @@
 </div>
 
 
+<div id="chipsAmount">
+    <h3>$</h3> <h3 th:text="${chipsAmount}"></h3>
+
+</div>
+
+
 <script>
 
 
@@ -235,7 +241,7 @@ console.log(fieldToMap);
 				};
 
 
-				if(Game.gameType == "straightUp") {
+				if(Game.gameType == "StraightUp") {
 					Game.chosenField = fieldToMap;
 				} else {
   				var field = map[fieldToMap];
@@ -245,7 +251,7 @@ console.log(fieldToMap);
 				Game.chips = $("#chipsBetInput").val();
 
 				console.log(Game);
-	                						$("#gameResult").append(Game.chosenField);
+	            $("#gameResult").append(Game.chosenField);
 
 					$.ajax({
 	            type: 'post',
@@ -254,17 +260,13 @@ console.log(fieldToMap);
 	            contentType: "application/json; charset=utf-8",
 	            traditional: true,
 	            success: function (data) {
-	                var inputText = "You lost " + data.score;
-	                   alert("Json sent");
-	                $("#gameResult").html(inputText);
+	                var inputText = "Your result is " + data.score;
+	                var inputField = data.winningField;
+	                $("#gameResult").html(inputText + inputField);
 	            }
 	        	});
 			});
 		</script>
-
-
-
-
 
 </body>
 </html>
