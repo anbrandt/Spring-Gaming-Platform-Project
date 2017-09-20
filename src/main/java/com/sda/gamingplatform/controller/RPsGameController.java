@@ -33,4 +33,8 @@ public class RPsGameController {
 		return "roulette";
 	}
 
+    @RequestMapping("/adminmanager")
+    public String users() {
+        return "adminmanager";
+    }
 }
