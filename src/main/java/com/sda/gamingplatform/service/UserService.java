@@ -47,9 +47,14 @@ public class UserService {
 		return allUsers;
 	}
 
+	public Iterable<UserRole> getAllUserRoles(){
+		Iterable<UserRole> allUserRoles = userRoleRepository.findAll();
+
+		return allUserRoles;
+	}
+
 	public User getUserByUserName(String userName) {
 		return userRepository.findByUsername(userName);
 	}
-
 
 }
