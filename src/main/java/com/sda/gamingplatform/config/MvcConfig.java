@@ -1,7 +1,9 @@
+/*
 package com.sda.gamingplatform.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -22,8 +24,23 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 				.setViewName("login");
 		registry.addViewController("/gameroom")
 				.setViewName("gameroom");
-		/*registry.addViewController("/roulette")
-				.setViewName("roulette");*/
+		*/
+/*registry.addViewController("/index2")
+				.setViewName("index2");*//*
+
+		*/
+/*registry.addViewController("/roulette")
+				.setViewName("roulette");*//*
+
 
 	}
+
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/js*/
+/**")
+				.addResourceLocations("/js/");
+	}
+
+
 }
+*/
