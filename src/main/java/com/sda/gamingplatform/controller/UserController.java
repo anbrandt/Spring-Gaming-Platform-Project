@@ -25,6 +25,11 @@ public class UserController {
 		return new ResponseEntity<Iterable<User>>(allUsers, HttpStatus.OK);
 	}*/
 
+	@RequestMapping(value = "/login2", method = RequestMethod.GET)
+	public String getLoginPage() {
+		return "login2";
+	}
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register() {
 		return "register";
