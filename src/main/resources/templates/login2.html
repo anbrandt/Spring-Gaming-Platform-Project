@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login2}">Login</a>
+              <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Register</a>
@@ -55,16 +55,36 @@
     </nav>
 
     <!-- Header -->
+
+    <p th:if="${loginError}" class="error">Wrong user or password</p>
+
+    <form sec:authorize="isAnonymous()" th:action="@{/login}" method="post">
+
+      <div class="form-group" for="username"><label> Username : <input id="username" type="text" name="username"/>
+      </label></div>
+      <div><label for="password"> Password: <input id="password" type="password" name="password"/> </label></div>
+      <div><input class="btn btn-primary" type="submit" value="Sign In"/></div>
+
+    </form>
     <header class="intro-header">
       <div class="container">
         <div class="intro-message">
-          <h1>Casino Platform</h1>
+          <h1>Login</h1>
           <hr class="intro-divider">
           <ul class="list-inline intro-social-buttons">
             <li class="list-inline-item">
               <a href="#" class="btn btn-secondary btn-lg">
                 <i class="fa fa-fw"></i>
                 <span class="network-name">Login</span>
+                <form sec:authorize="isAnonymous()" th:action="@{/login}" method="post">
+
+                <div class="form-group" for="username"><label> Username : <input id="username" type="text" name="username"/>
+                </label></div>
+                <div><label for="password"> Password: <input id="password" type="password" name="password"/> </label></div>
+                <div><input class="btn btn-primary" type="submit" value="Sign In"/></div>
+
+                </form>
+
               </a>
             </li>
             <li class="list-inline-item">
@@ -73,12 +93,8 @@
                 <span class="network-name">Register</span>
               </a>
             </li>
-            <li class="list-inline-item">
-              <a href="#" class="btn btn-secondary btn-lg">
-                <i class="fa fa-github fa-fw"></i>
-                <span class="network-name">GitHub</span>
-              </a>
-            </li>
+
+
           </ul>
         </div>
       </div>
@@ -112,6 +128,52 @@
     </section>
     <!-- /.content-section-a -->
 
+    <script>
+
+      $(document).ready(function(){
+    $("button").click(function(e){
+		e.preventDefault();
+
+		var name = $("#name").val();
+		var email = $("#email").val();
+		if(name == "" || name == null){
+			$(".nameInput").removeClass("has-success");
+			$(".nameInput .glyphicon-ok").remove();
+			$(".nameInput").addClass("has-error").append(" <span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
+			var flag1 = ("false");
+		}
+		else{
+			$(".nameInput").removeClass("has-error");
+			$(".nameInput .glyphicon-remove").remove();
+			$(".nameInput").addClass("has-success").append(" <span class='glyphicon glyphicon-ok form-control-feedback' aria-hidden='true'></span>");
+			var flag1 = ("true");
+		};
+		if(email == "" || email == null){
+			$(".emailInput").removeClass("has-success");
+			$(".emailInput .glyphicon-ok").remove();
+			$(".emailInput").addClass("has-error").append(" <span class='glyphicon glyphicon-remove form-control-feedback' aria-hidden='true'></span>");
+			var flag2 = ("false");
+		}
+		else{
+			$(".emailInput").removeClass("has-error");
+			$(".emailInput .glyphicon-remove").remove();
+			$(".emailInput").addClass("has-success").append(" <span class='glyphicon glyphicon-ok form-control-feedback' aria-hidden='true'></span>");
+			var flag2 = ("true");
+		};
+		if(flag1 == "true"){
+			if(flag2 == "true"){
+				location.href = 'http://www.yandex.ru/';
+			}
+			else{
+
+			};
+		}
+		else{
+
+		};
+	});
+});
+    </script>
 
 
     <!-- Bootstrap core JavaScript -->
