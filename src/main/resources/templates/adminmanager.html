@@ -29,11 +29,6 @@
         <td th:text="${user.username}"></td>
         <td th:text="${user.role}"></td>
 
-        var map = {
-        '1st column': '1',
-        '2nd column': '2'
-        };
-
         <td>
             <form th:action="@{'/adminmanager/'+${user.user_role_id}}" method="post">
                 <button type="submit" class="btn btn-default">Add admin role</button>
@@ -42,5 +37,11 @@
     </tr>
     </tbody>
 </table>
+<script>
+        var map = {
+        '1st column': '1',
+        '2nd column': '2'
+        };
+</script>>
 </body>
 </html>
