@@ -1,16 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
 
 <head>
-    <meta charset="UTF-8"/>
 
-    <link th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></link>
-    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
-    <script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js}" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <title>Roulette Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Casino Platform - Roulette</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link  th:href="@{/css/landing-page.css}" rel="stylesheet">
+    <script th:src="@{/vendor/jquery/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/popper/popper.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+
 </head>
 
 <body>
+
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a th:href="@{/}">
+            <img src="img/logo-app2.png" alt="casino platform">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/register}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" method="post">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header class="intro-header">
+    <div class="container">
+        <div class="intro-message">
+            <h1>Casino Platform</h1>
+            <!--<hr class="intro-divider">-->
+            <!--<ul class="list-inline intro-social-buttons">-->
+
+
+
 <p class="h1">Welcome to the Roulette!</p>
 <div class="container" id="betTypeContainer">
     <div class="dropdown">
@@ -29,11 +88,11 @@
 
 
 
-<div id="straightContainer" class="container hidden">
+<div id="straightContainer" class="container hidden hide">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">StraightUp Bet - Choose the Field
             <span class="caret"></span></button>
-        <ul  id="straightUpId" class="SelectInput dropdown-menu" role="menu" aria-labelledby="menu1">
+        <ul class="intro-roulette" id="straightUpId" class="SelectInput dropdown-menu" role="menu" aria-labelledby="menu1">
             <li role="presentation"><a role="menuitem" tabindex="-3" href="#">0<a/></li>
             <li role="presentation"><a role="menuitem" tabindex="-3" href="#">Red 1<a/></li>
             <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black 2</a></li>
@@ -76,7 +135,7 @@
 </div>
 
 
-<div id="columnContainer" class="container hidden">
+<div id="columnContainer" class="container hidden hide">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">ColumnBet - Choose the Column you want to bet on
             <span class="caret"></span></button>
@@ -87,7 +146,7 @@
         </ul>
     </div>
 </div>
-<div id="dozenContainer" class="container hidden">
+<div id="dozenContainer" class="container hide">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">DozenBet - Choose the Dozen you want to bet on
             <span class="caret"></span></button>
@@ -99,7 +158,7 @@
     </div>
 </div>
 
-<div id="evenOddContainer" class="container hidden">
+<div id="evenOddContainer" class="container hide">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">Even Odd Bet - Choose Even or Odd Fields
             <span class="caret"></span></button>
@@ -110,7 +169,7 @@
     </div>
 </div>
 
-<div id="18sBetContainer" class="container hidden">
+<div id="18sBetContainer" class="container hide">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">18s Bet - Choose which 18s Fields you want to bet on
             <span class="caret"></span></button>
@@ -121,7 +180,7 @@
     </div>
 </div>
 
-<div id="redBlackContainer" class="container hidden">
+<div id="redBlackContainer" class="container hide">
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" id="straightUpMenu" type="button" data-toggle="dropdown">Red Black Bet - Choose Red or Black Fields
             <span class="caret"></span></button>
@@ -133,7 +192,7 @@
     </div>
 </div>
 
-<form id="chipsBet" class="hidden">
+<form id="chipsBet" class="hide">
     <div class="form-group has-warning">
         <label for="ChipsBet">Bet</label>
         <input id="chipsBetInput" type="text" class="form-control" placeholder="Chips" required="true">
@@ -155,35 +214,43 @@
 <div id="updatedChipsAmount">
 </div>
 
+            <!--</ul>-->
+        </div>
+    </div>
+</header>
 
 
 <script>
 
+var allContainers = [
+'#straightContainer', '#18sBetContainer','#dozenContainer','#columnContainer', '#chipsBet', '#redBlackContainer', '#evenOddContainer'
+]
 
 var Game = {}
 
 $(document).ready(function(){
+console.log('document is ready');
     $("#straightUp").click(function(){
-        $("#straightContainer").removeClass('hidden');
+        $("#straightContainer").removeClass('hide');
         Game.gameType = "StraightUp";
     });
     $("#streetBet").click(function(){
-        $("#streetContainer").removeClass('hidden');
+        $("#streetContainer").removeClass('hide');
         Game.gameType = "StreetBet";
 
     });
     $("#columnBet").click(function(){
-        $("#columnContainer").removeClass('hidden');
+        $("#columnContainer").removeClass('hide');
                 Game.gameType = "ColumnBet";
 
     });
     $("#dozenBet").click(function(){
-        $("#dozenContainer").removeClass('hidden');
+        $("#dozenContainer").removeClass('hide');
                 Game.gameType = "DozenBet";
 
     });
     $("#evenOddBet").click(function(){
-        $("#evenOddContainer").removeClass('hidden');
+        $("#evenOddContainer").removeClass('hide');
         	        Game.gameType = "EvenOddBet";
 
     });
@@ -193,7 +260,7 @@ $(document).ready(function(){
 
     });
     $("#redBlackBet").click(function(){
-        $("#redBlackContainer").removeClass('hidden');
+        $("#redBlackContainer").removeClass('hide');
             Game.gameType = "RedBlackBet";
 
     });
@@ -209,7 +276,7 @@ console.log(fieldToMap);
 
   		$(document).ready(function(){
     		$("#straightContainer, #streetContainer, #columnContainer, #dozenContainer, #evenOddContainer, #18sBetContainer, #redBlackContainer" ).click(function(){
-       			 $("#chipsBet").removeClass('hidden');
+       			 $("#chipsBet").removeClass('hide');
    			 });
 		});
 
@@ -252,10 +319,15 @@ console.log(fieldToMap);
   				Game.chosenField = field;
   				}
 
+
 				Game.chips = $("#chipsBetInput").val();
 
 				console.log(Game);
 	            $("#gameResult").append(Game.chosenField);
+
+                for(i=0; i< allContainers.length; i++) {
+                   $(allContainers[i]).addClass("hide");
+                };
 
 					$.ajax({
 	            type: 'post',
@@ -274,6 +346,5 @@ console.log(fieldToMap);
 	        	});
 			});
 		</script>
-
 </body>
 </html>
