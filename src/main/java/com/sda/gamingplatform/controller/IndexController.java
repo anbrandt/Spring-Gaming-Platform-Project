@@ -12,4 +12,20 @@ public class IndexController {
 	return "index2";
 }
 
+@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String getRightIndex() {
+
+		return "index";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String getLogin() {
+
+		return "login";
+	}
+
+	@RequestMapping(value = "/gameroom", method = RequestMethod.GET)
+	public String getGameRoom() {
+		return "gameroom";
+	}
 }
