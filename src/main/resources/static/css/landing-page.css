@@ -9,6 +9,10 @@ body, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+.hide{
+display:none !important;
+}
+
 .intro-header {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -56,6 +60,10 @@ body, h1, h2, h3, h4, h5, h6 {
     margin-bottom: 20px;
     padding: 0;
   }
+  ul.intro-roulette>li {
+      margin-bottom: 20px;
+      padding: 0;
+    }
   ul.intro-social-buttons>li:last-child {
     margin-bottom: 0;
   }

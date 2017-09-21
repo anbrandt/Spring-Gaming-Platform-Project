@@ -40,7 +40,7 @@ public class UserController {
 
 		userService.create(user);
 
-		return "registerok";
+		return "index";
 	}
 
 
