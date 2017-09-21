@@ -39,15 +39,16 @@ public class RPsGameController {
 
     @RequestMapping("/adminmanager")
     public String users(Model model) {
-        model.addAttribute("users", userService.getAllUserRoles());
+        model.addAttribute("users", userService.getAllNonAdmin());
         return "adminmanager";
     }
 
     @RequestMapping("/adminmanager/{id}")
-    public String admin(@PathVariable("id") long id, Model model) {
+    public String admin(@PathVariable("id") Integer id, Model model) {
 
       //  new UserRole(id,"ROLE_ADMIN")
         //TODO: set admin rights
+        userService.grantAdminRole(id);
 
         return users(model);
     }

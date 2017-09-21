@@ -17,20 +17,17 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>#</th>
-        <th>User</th>
-        <th>Clearance</th>
-        <th>Add admin</th>
+        <th class="col-lg-2 col-lg-offset-0">#</th>
+        <th class="col-lg-2">User</th>
+        <th class="col-lg-2">Add admin</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="user,iter : ${users}">
         <td th:text="${iter.index}"></td>
         <td th:text="${user.username}"></td>
-        <td th:text="${user.role}"></td>
-
         <td>
-            <form th:action="@{'/adminmanager/'+${user.user_role_id}}" method="post">
+            <form th:action="@{'/adminmanager/'+${user.userId}}" method="post">
                 <button type="submit" class="btn btn-default">Add admin role</button>
             </form>
         </td>
@@ -39,9 +36,9 @@
 </table>
 <script>
         var map = {
-        '1st column': '1',
-        '2nd column': '2'
+        'ROLE_USER': 'USER',
+        'ROLE_ADMIN': 'ADMIN'
         };
-</script>>
+</script>
 </body>
 </html>
