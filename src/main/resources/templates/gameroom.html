@@ -68,7 +68,7 @@
             <ul class="list-inline intro-social-buttons">
 
                 <li class="list-inline-item">
-                    <a sec:authorize="hasRole('USER')" th:href="@{/roulette}" class="btn btn-secondary btn-lg">
+                    <a sec:authorize="hasAnyRole('USER','ADMIN')"  th:href="@{/roulette}" class="btn btn-secondary btn-lg">
                         <i class="fa fa-fw"></i>
                         <img src="img/button.png">
                     </a>
