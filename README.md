@@ -1,3 +1,4 @@
+![Main page](https://github.com/anbrandt/Spring-Gaming-Platform-Project/blob/master/screen1.jpg)  
 # Online Browser Casino Roulette Game
 ## 1. Features:
 ### - log and register users
