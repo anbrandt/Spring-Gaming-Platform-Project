@@ -13,8 +13,6 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
-	//w tej klasie definiujemy dostępy do podstron dla użytkowników o konkretnych rolach
-
 	private DataSource datasource;
 
 	@Autowired
@@ -22,8 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		this.datasource = dataSource;
 	}
 
-
-	//TODO permit all roulette for tests (later only for Users)
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.
